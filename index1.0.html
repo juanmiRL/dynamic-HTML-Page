@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>index.html</title>
+	<style>
+	              body {background-color: rgb(190, 231, 250);}
+	             .special {color: rgb(58, 19, 233)}
+	             .operator {font-weight: bold;}
+	             #result {border: solid 1pt;
+	             border-color: gray}
+	</style>
+	<script src="https://d3js.org/d3.v5.min.js">
+	</script>
+	<script>
+	               function myfun() {
+	                 document.getElementById('demo').style.fontSize='35px';   
+	               }  
+	               
+	               function operations(op){
+	                     var ops = {
+	                             sum: function sum_number(n_1, n_2) {
+	                                 return (parseInt(n_1) + parseInt(n_2));
+	                     },
+
+	                             subs: function subs_number(n_1, n_2) {
+	                                  return (parseInt(n_1) - parseInt(n_2));
+	                     },
+	             
+	                             mult: function mult_number(n_1, n_2) {
+	                                  return (parseInt(n_1) * parseInt(n_2));
+	                     },
+
+	                             div: function div_number(n_1, n_2) {
+	                                 return (parseInt(n_1) / parseInt(n_2));
+	                     }
+
+
+	         };
+	         
+	         var n_1 = document.getElementById("num1").value;
+	         var n_2 = document.getElementById("num2").value;
+	         
+	         switch(op) {
+	                 case 'sum':
+	                     var result = ops.sum(n_1, n_2);
+	                     document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"<\/span>";
+	                     break;
+	                 case 'subs':
+	                     var result = ops.subs(n_1, n_2);
+	                     document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"<\/span>";
+	                     break;
+	                 case 'mult':
+	                     var result = ops.mult(n_1, n_2);
+	                     document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"<\/span>";
+	                     break;
+	                 case 'div':
+	                     var result = ops.div(n_1, n_2);
+	                     document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"<\/span>";
+	                     break;
+
+	             }
+	         }
+
+	</script>
+</head>
+<body>
+	<div align="center" class="special">
+		<h2>
+            <p style="color:black"> 
+            Juan Miguel Rodríguez Lago <br>
+            Data Tyding and Reporting 
+            </p>
+        </h2>
+            <p style="color:black"> Master course in Statistics for Data Science </p>
+            <p style="color:black"> 09/02/2021 </p>
+        <br><br>
+        <h3>SIMPLE CALCULATOR
+		<p style="color:black"> Please introduce two numbers</p>
+			Number 1: <input id="num1" type="number"><br>
+			Number 2: <input id="num2" type="number"><br>
+			<p>Operations</p>
+            <input onclick="operations('sum'); return false;" type="button" value="+"> 
+            <input onclick="operations('subs'); return false;" type="button" value="-"> 
+            <input onclick="operations('mult'); return false;" type="button" value="*"> 
+            <input onclick="operations('div'); return false;" type="button" value="/">
+            <br>
+			<p>RESULT</p>
+			<p id="result" style="color: green;"></p><br>
+			<br>
+		</h3>
+	</div>
+</body>
+</html>
