@@ -5,50 +5,81 @@
         <meta charset="utf-8"/>
         <title>index.html</title>
         <style>
-            body {background-color: white;}
-          .special {color: rgb(47, 0, 255)}
-          .operator {font-weight: bold;}
-          #result {border: solid 1pt;
-          border-color: gray}
+         body {background-color: white;}
+        .special {color: rgb(47, 0, 255)}
+        .operator {font-weight: bold;}
+        #result {border: solid 1pt;
+        border-color: gray}
         </style>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script>
           function myfun() {
             document.getElementById('demo').style.fontSize='35px';   
           }  
-          function sum() {
-              const x = document.getElementById('first').value;
-              const y = document.getElementById('second').value;
-              document.getElementById('result').innerHTML = parseInt(x) + parseInt(y);
-          }
-          function subs() {
-              const x = document.getElementById('first').value;
-              const y = document.getElementById('second').value;
-              document.getElementById('result').innerHTML = parseInt(x) - parseInt(y);
-          }
+          
+          function operations(op){
+                var ops = {
+                        sum: function sum_number(n_1, n_2) {
+                            return (parseInt(n_1) + parseInt(n_2));
+                },
 
-          function mult() {
-              const x = document.getElementById('first').value;
-              const y = document.getElementById('second').value;
-              document.getElementById('result').innerHTML = parseInt(x) * parseInt(y);
-          }
+                        subs: function subs_number(n_1, n_2) {
+                             return (parseInt(n_1) - parseInt(n_2));
+                },
+        
+                        mult: function mult_number(n_1, n_2) {
+                             return (parseInt(n_1) * parseInt(n_2));
+                },
 
-          function div() {
-              const x = document.getElementById('first').value;
-              const y = document.getElementById('second').value;
-              document.getElementById('result').innerHTML = parseInt(x) / parseInt(y);
-          }
+                        div: function div_number(n_1, n_2) {
+                            return (parseInt(n_1) / parseInt(n_2));
+                }
+
+
+    };
+    
+    var n_1 = document.getElementById("num1").value;
+    var n_2 = document.getElementById("num2").value;
+    
+    switch(op) {
+            case 'sum':
+                var result = ops.sum(n_1, n_2);
+                document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"</span>";
+                break;
+            case 'subs':
+                var result = ops.subs(n_1, n_2);
+                document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"</span>";
+                break;
+            case 'mult':
+                var result = ops.mult(n_1, n_2);
+                document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"</span>";
+                break;
+            case 'div':
+                var result = ops.div(n_1, n_2);
+                document.getElementById('result').innerHTML="<span style='color: green;'>"+result+"</span>";
+                break;
+
+        }
+    }
 
         </script>
       </head>
       
       <body>
-          <div class="special">Simple calculator<br>
-              <input id="first" placeholder="first number">
-              <p class="operator">+</p>
-              <input id="second" placeholder="second number">
-              <br>
-              <button id="equalTo" onclick="sum()">=</button>
-              <div id="result">Result</div>
+          <div class="special">SIMPLE CALCULATOR 
+            <p> Please introduce two numbers.</p>
+            <form>
+    Number 1: <input id="num1" type="number" /> <br>
+    Number 2: <input id="num2" type="number" />
+    <br>
+    <p>Operations</p>
+    <input type="button" value="+" onclick="operations('sum'); return false;" />
+    <input type="button" value="-" onclick="operations('subs'); return false;" />
+    <input type="button" value="*" onclick="operations('mult'); return false;" />
+    <input type="button" value="/" onclick="operations('div'); return false;" /><br>
+    <p> RESULT </p>
+    <p id="result" style="color: green;"></p>
+    <br /><br />
+</form>
           </div>
       </body>
