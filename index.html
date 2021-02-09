@@ -21,11 +21,29 @@
               const y = document.getElementById('second').value;
               document.getElementById('result').innerHTML = parseInt(x) + parseInt(y);
           }
+          function subs() {
+              const x = document.getElementById('first').value;
+              const y = document.getElementById('second').value;
+              document.getElementById('result').innerHTML = parseInt(x) - parseInt(y);
+          }
+
+          function mult() {
+              const x = document.getElementById('first').value;
+              const y = document.getElementById('second').value;
+              document.getElementById('result').innerHTML = parseInt(x) * parseInt(y);
+          }
+
+          function div() {
+              const x = document.getElementById('first').value;
+              const y = document.getElementById('second').value;
+              document.getElementById('result').innerHTML = parseInt(x) / parseInt(y);
+          }
+
         </script>
       </head>
       
       <body>
-          <div class="special">My first section<br>
+          <div class="special">Simple calculator<br>
               <input id="first" placeholder="first number">
               <p class="operator">+</p>
               <input id="second" placeholder="second number">
